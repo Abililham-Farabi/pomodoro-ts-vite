@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍅</text></svg>" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pomodoro Timer — TS + Vite</title>
+  </head>
+  <body>
+    <div id="app">
+      <main class="card">
+        <header>
+          <h1>🍅 Pomodoro</h1>
+          <p class="subtitle">Fokus 25 • Istirahat 5 • Istirahat Panjang 15</p>
+        </header>
+
+        <nav class="modes" aria-label="Mode timer">
+          <button data-mode="focus" class="mode active">Fokus</button>
+          <button data-mode="short" class="mode">Istirahat</button>
+          <button data-mode="long" class="mode">Istirahat Panjang</button>
+        </nav>
+
+        <section class="timer-wrap">
+          <svg class="ring" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="90" class="ring-bg" />
+            <circle cx="100" cy="100" r="90" class="ring-fg" id="ringFg" />
+          </svg>
+          <div class="timer-text">
+            <div id="time">25:00</div>
+            <div id="status">Siap fokus?</div>
+          </div>
+        </section>
+
+        <div class="controls">
+          <button id="btnStart" class="primary">Mulai</button>
+          <button id="btnReset">Reset</button>
+        </div>
+
+        <section class="settings">
+          <label>Fokus <input id="inFocus" type="number" min="1" max="120" value="25" /> mnt</label>
+          <label>Istirahat <input id="inShort" type="number" min="1" max="60" value="5" /> mnt</label>
+          <label>Panjang <input id="inLong" type="number" min="1" max="60" value="15" /> mnt</label>
+        </section>
+
+        <footer>
+          <p>Sesi fokus selesai: <strong id="count">0</strong> 🍅</p>
+          <p class="hint">Tips: klik tab mode untuk ganti, timer bunyi + judul tab ikut jalan.</p>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
