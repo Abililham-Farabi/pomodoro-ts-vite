@@ -13,6 +13,7 @@ const countEl = $<HTMLElement>('#count');
 const ringFg = $<SVGCircleElement>('#ringFg');
 const btnStart = $<HTMLButtonElement>('#btnStart');
 const btnReset = $<HTMLButtonElement>('#btnReset');
+const btnSkip = $<HTMLButtonElement>('#btnSkip');
 const modeBtns = [...document.querySelectorAll<HTMLButtonElement>('.mode')];
 const inFocus = $<HTMLInputElement>('#inFocus');
 const inShort = $<HTMLInputElement>('#inShort');
@@ -91,6 +92,12 @@ btnStart.addEventListener('click', () => {
 
 btnReset.addEventListener('click', () => {
   timer.reset();
+  render(timer.getRemaining(), timer.getMode());
+  renderMode(timer.getMode());
+});
+
+btnSkip.addEventListener('click', () => {
+  timer.skip();
   render(timer.getRemaining(), timer.getMode());
   renderMode(timer.getMode());
 });

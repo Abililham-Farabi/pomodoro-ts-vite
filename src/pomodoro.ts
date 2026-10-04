@@ -101,6 +101,17 @@ export class PomodoroTimer {
     this.onTick(this.remaining, this.mode);
   }
 
+  /** Lewati sesi saat ini tanpa menambah hitungan fokus selesai. */
+  skip(): void {
+    this.pause();
+    if (this.mode === 'focus') {
+      const next: Mode = (this.completedFocus + 1) % 4 === 0 ? 'long' : 'short';
+      this.switchMode(next);
+    } else {
+      this.switchMode('focus');
+    }
+  }
+
   static format(sec: number): string {
     const m = Math.floor(Math.max(0, sec) / 60)
       .toString()
